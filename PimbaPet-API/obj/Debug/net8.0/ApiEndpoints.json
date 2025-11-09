@@ -1,0 +1,74 @@
+[
+  {
+    "ContainingType": "PimbaPetAPI.Controllers.DonoController",
+    "Method": "AdicionarDono",
+    "RelativePath": "api/Dono/Donos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "donoModel",
+        "Type": "PimbaPetAPI.Models.DonoModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PimbaPetAPI.Controllers.DonoController",
+    "Method": "PegarDonos",
+    "RelativePath": "api/Dono/Donos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[PimbaPetAPI.Models.DonoModel, PimbaPet-API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "PimbaPetAPI.Controller.PetController",
+    "Method": "AdicionarPet",
+    "RelativePath": "api/Pet/Pets",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "petModel",
+        "Type": "PimbaPetAPI.Models.PetModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "PimbaPetAPI.Controller.PetController",
+    "Method": "PegarPets",
+    "RelativePath": "api/Pet/Pets",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.List\u00601[[PimbaPetAPI.Models.PetModel, PimbaPet-API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  }
+]

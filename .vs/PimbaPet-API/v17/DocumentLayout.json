@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D1F82CB5-ABDF-40D6-9DCB-2AFE6D718059}|PimbaPet-API.csproj|c:\\users\\thanosnigga\\documents\\pimbapet\\pimbapet-api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D1F82CB5-ABDF-40D6-9DCB-2AFE6D718059}|PimbaPet-API.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D1F82CB5-ABDF-40D6-9DCB-2AFE6D718059}|PimbaPet-API.csproj|c:\\users\\thanosnigga\\documents\\pimbapet\\pimbapet-api\\pimbapet-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{D1F82CB5-ABDF-40D6-9DCB-2AFE6D718059}|PimbaPet-API.csproj|solutionrelative:pimbapet-api.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
@@ -14,21 +18,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 14,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PimbaPet-API",
-              "DocumentMoniker": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\PimbaPet-API.csproj",
-              "RelativeDocumentMoniker": "PimbaPet-API.csproj",
-              "ToolTip": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\PimbaPet-API.csproj",
-              "RelativeToolTip": "PimbaPet-API.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-11-07T22:07:40.848Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
@@ -84,6 +75,32 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACUAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-08T21:11:01.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PimbaPet-API.csproj",
+              "DocumentMoniker": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\PimbaPet-API.csproj",
+              "RelativeDocumentMoniker": "PimbaPet-API.csproj",
+              "ToolTip": "C:\\Users\\ThanosNigga\\Documents\\PimbaPET\\PimbaPet-API\\PimbaPet-API.csproj",
+              "RelativeToolTip": "PimbaPet-API.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-11-07T22:07:40.848Z",
+              "EditorCaption": ""
             }
           ]
         }

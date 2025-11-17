@@ -6,27 +6,41 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
+import { login } from "@/lib/api"
 
 export default function LoginPage() {
   const router = useRouter()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
+    setError("")
 
     if (!email || !password) {
+      setError("Preencha usuário e senha")
       setIsLoading(false)
       return
     }
 
-    setTimeout(() => {
-      localStorage.setItem("user", JSON.stringify({ email }))
-      router.push("/dashboard")
+    try {
+      const resp = await login({ email, senha: password })
+      if (resp?.token) {
+        localStorage.setItem("token", resp.token)
+        localStorage.setItem("user", JSON.stringify({ email }))
+        router.push("/dashboard")
+      } else {
+        setError("Usuário ou senha inválidos")
+      }
+    } catch (err) {
+      console.error("Login error:", err)
+      setError("Erro ao conectar com o servidor")
+    } finally {
       setIsLoading(false)
-    }, 500)
+    }
   }
 
   return (
@@ -69,6 +83,10 @@ export default function LoginPage() {
             />
           </div>
 
+          {error && (
+            <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">{error}</div>
+          )}
+
           {/* Button */}
           <Button
             type="submit"
@@ -79,23 +97,6 @@ export default function LoginPage() {
             {isLoading ? "Entrando..." : "Acessar Conta"}
           </Button>
         </form>
-
-        <div className="flex gap-3 mt-6">
-          <Button
-            onClick={() => router.push("/login")}
-            className="flex-1 text-white font-semibold py-2 rounded h-10"
-            style={{ backgroundColor: "#8AC57B" }}
-          >
-            Entrar
-          </Button>
-          <Button
-            onClick={() => router.push("/signup")}
-            className="flex-1 text-white font-semibold py-2 rounded h-10"
-            style={{ backgroundColor: "#8AC57B" }}
-          >
-            Cadastrar
-          </Button>
-        </div>
       </div>
     </div>
   )

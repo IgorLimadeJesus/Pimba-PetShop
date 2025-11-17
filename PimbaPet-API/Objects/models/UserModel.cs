@@ -1,5 +1,8 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace PimbaPetAPI.Objects.Models
 {
+    [Table("usuarios")]
     public class UserModel
     {
         public int id { get; set; }

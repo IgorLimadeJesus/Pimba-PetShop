@@ -3,7 +3,7 @@
 import "./Table.css"
 
 interface Pet {
-  id: number
+  id: number | string
   name: string
   type: string
   breed: string
@@ -12,7 +12,7 @@ interface Pet {
 
 interface PetsTableProps {
   pets: Pet[]
-  onDelete: (id: number) => void
+  onDelete: (id: number | string) => void
 }
 
 export default function PetsTable({ pets, onDelete }: PetsTableProps) {

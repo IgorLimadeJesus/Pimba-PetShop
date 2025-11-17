@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PimbaPet-API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf1ba0f7bea83e92be2745f50d5a11c9d8f6fb72")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cb8b68f14d4dbc592d9c750d62879bcdfea3c488")]
 [assembly: System.Reflection.AssemblyProductAttribute("PimbaPet-API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PimbaPet-API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

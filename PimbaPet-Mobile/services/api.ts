@@ -1,7 +1,7 @@
 import { Platform } from 'react-native';
 
 const DEFAULT_HOST = Platform.select({
-  android: 'http://192.168.1.229:5202',
+  android: 'http://seu-ip-publico:5202',
   ios: 'http://localhost:5202',
   default: 'http://localhost:5202',
 });

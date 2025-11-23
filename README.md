@@ -1,4 +1,4 @@
-# 🐾 PetShop – Aplicação Web & Mobile
+# 🐾 PimbaPet – Aplicação Web & Mobile
 
 Este projeto consiste em um sistema completo para **Gestão de PetShop**, desenvolvido como trabalho acadêmico para a disciplina de **Desenvolvimento Fullstack**.  
 O sistema é composto por uma aplicação **Web**, um aplicativo **Mobile** e uma **API** responsável pelo backend.

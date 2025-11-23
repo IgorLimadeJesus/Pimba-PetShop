@@ -46,5 +46,32 @@ namespace PimbaPetAPI.Controllers
                 return BadRequest("Erro ao buscar os donos.");
             }
         }
+
+        [HttpDelete("Donos/{id}")]
+        public async Task<ActionResult> DeletarDono(int id)
+        {
+            try
+            {
+                var dono = await _dbContext.Donos.FindAsync(id);
+                if (dono == null)
+                {
+                    return NotFound("Dono não encontrado.");
+                }
+
+                // Delete all pets associated with this dono first
+                var petsDoDono = await _dbContext.Pets.Where(p => p.Dono_id == id).ToListAsync();
+                _dbContext.Pets.RemoveRange(petsDoDono);
+
+                // Then delete the dono
+                _dbContext.Donos.Remove(dono);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new { Success = true, Message = "Dono e pets associados deletados com sucesso." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Erro ao deletar Dono: {ex.Message}");
+            }
+        }
     }
 }

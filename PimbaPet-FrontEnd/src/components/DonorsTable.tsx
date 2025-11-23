@@ -3,14 +3,14 @@
 import "./Table.css"
 
 interface Donor {
-  id: number
+  id: number | string
   name: string
   phone: string
 }
 
 interface DonorsTableProps {
   donors: Donor[]
-  onDelete: (id: number) => void
+  onDelete: (id: number | string) => void
 }
 
 export default function DonorsTable({ donors, onDelete }: DonorsTableProps) {

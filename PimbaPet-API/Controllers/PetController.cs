@@ -44,5 +44,27 @@ namespace PimbaPetAPI.Controller
                 return BadRequest("Erro ao buscar os pets.");
             }
         }
+
+        [HttpDelete("Pets/{id}")]
+        public async Task<ActionResult> DeletarPet(int id)
+        {
+            try
+            {
+                var pet = await _dbContext.Pets.FindAsync(id);
+                if (pet == null)
+                {
+                    return NotFound("Pet não encontrado.");
+                }
+
+                _dbContext.Pets.Remove(pet);
+                await _dbContext.SaveChangesAsync();
+
+                return Ok(new { Success = true, Message = "Pet deletado com sucesso." });
+            }
+            catch
+            {
+                return BadRequest("Erro ao deletar Pet.");
+            }
+        }
     }
 }

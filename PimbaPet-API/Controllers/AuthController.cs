@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PimbaPet_API.Services;
+using PimbaPet_API.Services.Interface;
 using PimbaPetAPI.data;
 using PimbaPetAPI.Objects.DTOs;
 using PimbaPetAPI.Objects.Models;
@@ -12,10 +14,12 @@ namespace PimbaPet_API.Controllers
     public class AuthController : ControllerBase
     {
         private readonly PetShopDBContext _dbContext;
+        private readonly ITokenService _tokenService;
 
-        public AuthController(PetShopDBContext petShopDBContext)
+        public AuthController(PetShopDBContext petShopDBContext, ITokenService tokenService)
         {
             _dbContext = petShopDBContext;
+            _tokenService = tokenService;
         }
 
         [HttpPost("/register")]
@@ -39,16 +43,26 @@ namespace PimbaPet_API.Controllers
                 await _dbContext.SaveChangesAsync();
 
                 return Ok(user);
-            } catch (Exception ex) 
+            }
+            catch (Exception ex)
             {
                 return BadRequest(ex.Message);
             }
         }
 
         [HttpPost("/login")]
-        public async Task<ActionResult> Logar()
+        public async Task<ActionResult> Logar([FromBody] LoginDTO dto)
         {
-            throw new NotImplementedException();
+            var user = _dbContext.Users.FirstOrDefault(u => u.email == dto.email);
+
+            if (user == null || !BCrypt.Net.BCrypt.Verify(dto.senha, user.senha))
+            {
+                return Unauthorized("Credenciais inválidas");
+            }
+
+            var token = _tokenService.GerarToken(user);
+
+            return Ok(new { token });
         }
 
     }

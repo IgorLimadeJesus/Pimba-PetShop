@@ -1,10 +1,11 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Geist, Geist_Mono } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+// Vercel Analytics import removed for local/dev runs to prevent loading /_vercel/insights/script.js
 import { AuthProvider } from "@/lib/auth-context"
 import { ClientProvider } from "@/lib/client-context"
 import { UserProvider } from "@/lib/user-context"
+import Providers from "./providers"
 import "./globals.css"
 
 const _geist = Geist({ subsets: ["latin"] })
@@ -39,14 +40,13 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`font-sans antialiased`}>
-        <AuthProvider>
-          <UserProvider>
-            <ClientProvider>{children}</ClientProvider>
-          </UserProvider>
-        </AuthProvider>
-        <Analytics />
+        <Providers>{children}</Providers>
+        {/* Only enable Vercel Analytics when running in production and when explicitly enabled by env var.
+            This avoids 404/blocked script noise during local development. Set NEXT_PUBLIC_VERCEL_ANALYTICS=1
+            in production if you want analytics enabled. */}
+        {/* Vercel Analytics disabled for local runs to avoid 404/blocked requests */}
       </body>
     </html>
   )

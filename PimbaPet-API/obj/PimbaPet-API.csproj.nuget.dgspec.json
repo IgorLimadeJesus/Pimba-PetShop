@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj": {}
+    "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj": {
+    "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
+        "projectUniqueName": "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
         "projectName": "PimbaPet-API",
-        "projectPath": "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
+        "projectPath": "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
         "packagesPath": "C:\\Users\\ThanosNigga\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\obj\\",
+        "outputPath": "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

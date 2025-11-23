@@ -232,47 +232,42 @@ export async function getPets(): Promise<Pet[]> {
     return []
   }
 }
-
-export async function createPet(pet: Omit<Pet, 'id'>): Promise<Pet | null> {
+// api.ts
+export async function createPet(pet: { nome: string; tipo: string; raca: string; donoId: number }) {
   try {
-    console.log("[API] Creating pet:", pet)
-    const token = localStorage.getItem("token")
+    console.log("[API] Criando pet:", pet)
 
-    // Convert donoId to Dono_id as expected by backend
-    const petPayload = {
-      nome: pet.nome,
-      tipo: pet.tipo,
-      raca: pet.raca,
-      Dono_id: parseInt(pet.donoId as string),
+    if (!pet.donoId || pet.donoId <= 0) {
+      throw new Error("Dono_id inválido (precisa ser inteiro entre 1 e 2147483647)")
     }
 
-    console.log("[API] Sending pet payload:", petPayload)
-
-    const response = await fetchWithTimeout(`${API_BASE_URL}/Pet/Pets`, {
+    const response = await fetch("http://localhost:5202/api/Pet/Pets", {
       method: "POST",
-      mode: "cors",
       headers: {
         "Content-Type": "application/json",
-        ...(token && { Authorization: `Bearer ${token}` }),
       },
-      body: JSON.stringify(petPayload),
+      body: JSON.stringify({
+        nome: pet.nome,
+        tipo: pet.tipo,
+        raca: pet.raca,
+        dono_id: Number(pet.donoId), // <- aqui é o nome correto que o backend espera
+      }),
     })
-    console.log("[API] Create pet response status:", response.status)
 
     if (!response.ok) {
-      const errorText = await response.text()
-      console.error("[API] Error response:", errorText)
-      throw new Error(`HTTP Error: ${response.status} - ${errorText}`)
+      const text = await response.text()
+      throw new Error(`Erro ao criar pet: ${text}`)
     }
 
     const data = await response.json()
-    console.log("[API] Pet created:", data)
-    return { ...pet, id: Date.now().toString() }
+    console.log("[API] Pet criado com sucesso:", data)
+    return data
   } catch (error) {
     console.error("[API] Error creating pet:", error)
-    return null
+    throw error
   }
 }
+
 
 // Delete APIs
 export async function deleteDono(id: string): Promise<boolean> {

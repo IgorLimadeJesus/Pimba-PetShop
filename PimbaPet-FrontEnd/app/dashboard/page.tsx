@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Input } from "@/components/ui/input"
 import { Search, Trash2, Edit2 } from "lucide-react"
@@ -16,6 +17,7 @@ import { getDonos, createDono, getPets, createPet, deleteDono, deletePet, type D
 export default function DashboardPage() {
   const router = useRouter()
   const { theme, setTheme } = useTheme()
+  const iconGreenFilter = "invert(74%) sepia(11%) saturate(1035%) hue-rotate(71deg) brightness(92%) contrast(87%)"
   const [pets, setPets] = useState<Pet[]>([])
   const [donos, setDonos] = useState<Dono[]>([])
   const [user, setUser] = useState<any>(null)
@@ -67,15 +69,15 @@ export default function DashboardPage() {
     }
   }
 
-  const handleAddPet = async (data: { nome: string; tipo: string; raca: string; dono: string }) => {
-    const newPet = await createPet({
+  const handleAddPet = async (data: { nome: string; tipo: string; raca: string; donoId: number }) => {
+    const result = await createPet({
       nome: data.nome,
       tipo: data.tipo,
       raca: data.raca,
-      donoId: data.dono,
+      donoId: data.donoId,
     })
-    if (newPet) {
-      setPets([...pets, newPet])
+    if (result) {
+      await loadData()
     }
   }
 
@@ -232,13 +234,20 @@ export default function DashboardPage() {
             </div>
 
             <div className="flex items-center gap-2">
-              <span className="text-gray-700 text-sm">👤</span>
               <button
                 onClick={() => router.push("/signup-admin")}
-                className="text-gray-700 dark:text-gray-200 font-medium flex items-center"
+                className="text-gray-700 dark:text-gray-200 font-medium flex items-center gap-2"
                 style={{ color: "#8AC57B", cursor: "pointer" }}
               >
-                Cadastrar
+                <Image
+                  src="/adicionar-usuario.png"
+                  alt="Cadastrar usuário"
+                  width={18}
+                  height={18}
+                  priority
+                  style={{ filter: iconGreenFilter }}
+                />
+                <span>Cadastrar</span>
               </button>
               <button
                 onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
@@ -247,7 +256,14 @@ export default function DashboardPage() {
                 className="ml-2 p-1 rounded"
                 style={{ color: "#8AC57B", cursor: "pointer", background: "transparent", border: "1px solid #8AC57B", padding: "4px" }}
               >
-                {theme === "dark" ? "🌙" : "🌞"}
+                <Image
+                  src={theme === "dark" ? "/lua.png" : "/brilho.png"}
+                  alt={theme === "dark" ? "Modo escuro" : "Modo claro"}
+                  width={18}
+                  height={18}
+                  priority
+                  style={{ filter: iconGreenFilter }}
+                />
               </button>
             </div>
           </div>

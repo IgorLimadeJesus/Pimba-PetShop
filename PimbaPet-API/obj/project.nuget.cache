@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "o0LKHlgngr0=",
+  "dgSpecHash": "SIWkQTOF7K8=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ThanosNigga\\Documents\\Projetos\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
+  "projectFilePath": "C:\\Users\\ThanosNigga\\Documents\\PimbaPETa\\Pimba-PetShop\\PimbaPet-API\\PimbaPet-API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ThanosNigga\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\ThanosNigga\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

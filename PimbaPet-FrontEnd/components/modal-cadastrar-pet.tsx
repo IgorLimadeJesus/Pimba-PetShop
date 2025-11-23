@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { useTheme } from "next-themes"
 import { X, ChevronDown } from "lucide-react"
@@ -10,18 +9,24 @@ interface ModalCadastrarPetProps {
   isOpen: boolean
   onClose: () => void
   donos: Array<{ id: string; nome: string }>
-  onSubmit: (data: { nome: string; tipo: string; raca: string; dono: string }) => void
+  onSubmit: (data: { nome: string; tipo: string; raca: string; donoId: number }) => void
 }
 
 export function ModalCadastrarPet({ isOpen, onClose, donos, onSubmit }: ModalCadastrarPetProps) {
   const { theme } = useTheme()
-  const [formData, setFormData] = useState({ nome: "", tipo: "", raca: "", dono: "" })
+  const [formData, setFormData] = useState({ nome: "", tipo: "", raca: "", donoId: 0 })
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (formData.donoId <= 0) {
+      alert("Selecione um dono válido")
+      return
+    }
+
     onSubmit(formData)
-    setFormData({ nome: "", tipo: "", raca: "", dono: "" })
+    setFormData({ nome: "", tipo: "", raca: "", donoId: 0 })
     onClose()
   }
 
@@ -92,23 +97,20 @@ export function ModalCadastrarPet({ isOpen, onClose, donos, onSubmit }: ModalCad
                 className="w-full px-3 py-2 border-2 rounded flex items-center justify-between text-left focus:outline-none dark:bg-slate-700 dark:text-gray-300"
                 style={{ borderColor: "#8AC57B", backgroundColor: theme === "dark" ? "#1e293b" : "#f9faf8" }}
               >
-                <span className={formData.dono ? "text-gray-800 dark:text-gray-100" : "text-gray-600 dark:text-gray-400"}>
-                  {formData.dono ? donos.find((d) => d.id === formData.dono)?.nome : "Selecione o dono do pet"}
+                <span className={formData.donoId ? "text-gray-800 dark:text-gray-100" : "text-gray-600 dark:text-gray-400"}>
+                  {formData.donoId ? donos.find((d) => d.id === String(formData.donoId))?.nome : "Selecione o dono do pet"}
                 </span>
                 <ChevronDown size={18} style={{ color: "#8AC57B" }} />
               </button>
 
               {isDropdownOpen && (
-                <div
-                  className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-slate-700 border-2 rounded z-10"
-                  style={{ borderColor: "#8AC57B" }}
-                >
+                <div className="absolute top-full left-0 right-0 mt-1 bg-white dark:bg-slate-700 border-2 rounded z-10" style={{ borderColor: "#8AC57B" }}>
                   {donos.map((dono) => (
                     <button
                       key={dono.id}
                       type="button"
                       onClick={() => {
-                        setFormData({ ...formData, dono: dono.id })
+                        setFormData({ ...formData, donoId: parseInt(dono.id) })
                         setIsDropdownOpen(false)
                       }}
                       className="w-full px-3 py-2 text-left hover:bg-gray-100 dark:hover:bg-slate-600 text-gray-800 dark:text-gray-100 text-sm"
@@ -127,7 +129,7 @@ export function ModalCadastrarPet({ isOpen, onClose, donos, onSubmit }: ModalCad
             className="w-full py-2 text-white font-bold rounded hover:opacity-90 transition-opacity"
             style={{ backgroundColor: "#8AC57B" }}
           >
-            Criar Conta
+            Criar Pet
           </button>
         </form>
       </div>
